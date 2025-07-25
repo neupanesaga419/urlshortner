@@ -18,7 +18,7 @@ Before running this project, make sure you have the following installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone <thisrepourl>
+git clone <this-repo-url>
 cd urlshrotner
 ```
 
@@ -42,13 +42,38 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Run Database Migrations
+### 4. Create Environment File
+
+Create a `.env` file in the root directory of the project:
+
+```bash
+# On Windows
+echo. > .env
+
+# On macOS/Linux
+touch .env
+```
+
+Add the following environment variables to your `.env` file:
+
+```env
+DJANGO_SECRET_KEY=your-secret-key-here
+
+```
+
+**Note**: Replace `your-secret-key-here` with a secure Django secret key. You can generate one using Python:
+
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+### 5. Run Database Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 5. Create a Superuser (Optional)
+### 6. Create a Superuser (Optional)
 
 To access the admin panel, create a superuser account:
 
@@ -58,7 +83,7 @@ python manage.py createsuperuser
 
 Follow the prompts to set up your admin credentials.
 
-### 6. Run the Development Server
+### 7. Run the Development Server
 
 ```bash
 python manage.py runserver
@@ -104,11 +129,7 @@ urlshrotner/
 
 ## Development
 
-### Running Tests
 
-```bash
-python manage.py test
-```
 
 ### Making Migrations
 
@@ -123,11 +144,9 @@ python manage.py migrate
 
 ## Environment Variables
 
-For production deployment, consider setting up the following environment variables:
 
-- `SECRET_KEY`: Django secret key
-- `DEBUG`: Set to `False` for production
-- `ALLOWED_HOSTS`: List of allowed hostnames
+- `DJANGO_SECRET_KEY`: Django secret key
+
 
 ## Contributing
 
